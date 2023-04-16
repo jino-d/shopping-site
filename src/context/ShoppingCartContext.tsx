@@ -49,7 +49,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
 
-  const getItemQuantity = useCallback((id) => {
+  const getItemQuantity = useCallback((id: number) => {
     return cartItems.find(item=> item.id === id)?.quantity || 0
   }, [cartItems])
 
@@ -110,7 +110,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
       }}
     >
       {children}
-      <ShoppingCart isOpen={isOpen} setIsOpen={setIsOpen} />
+      <ShoppingCart isOpen={isOpen} setIsOpen={()=>setIsOpen} />
     </ShoppingCartContext.Provider>
   )
 }
